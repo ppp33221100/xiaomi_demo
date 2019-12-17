@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
-
+import Shoppingcar from "../components/shoppingcar.vue"
 Vue.use(Router)
 
 export default new Router({
@@ -11,5 +10,10 @@ export default new Router({
       name: '',
       component: 
     }*/
+    {
+    path:'/shoppingcar',
+    name:'shoppingcar',
+    component:Shoppingcar
+    }
   ]
 })
