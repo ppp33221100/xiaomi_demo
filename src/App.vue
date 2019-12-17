@@ -1,23 +1,29 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <tabbar></tabbar>
     <router-view/>
   </div>
 </template>
 
 <script>
+  import Tabbar from './components/Tabbar.vue'
+import './assets/js/remStyle.js'
 export default {
-  name: 'App'
+  name: 'App',
+  components:{
+    Tabbar
+  }
+
 }
 </script>
 
 <style>
-#app {
+/* #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
+} */
 </style>
