@@ -37,7 +37,6 @@
 			this.$axios.get("https://shiyaming1994.github.io/mi/static/homeGoods.json?page=1")
 			.then(res=>{
 				this.Phonedata=res.data
-				console.log(this.Phonedata)
 			})
 		}
 	}

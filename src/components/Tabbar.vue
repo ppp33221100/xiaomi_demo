@@ -2,9 +2,9 @@
 	<div class="tabbar">
 		<div class="tabbars"></div>
 		<van-tabbar v-model="active">
-			  <van-tabbar-item name="home" icon="wap-home-o">首页</van-tabbar-item>
+			  <van-tabbar-item name="home" icon="wap-home-o" @click="shoppingcar('/home')">首页</van-tabbar-item>
 			  <van-tabbar-item name="search" icon="apps-o">分类</van-tabbar-item>
-			  <van-tabbar-item name="friends" icon="shopping-cart-o"  @click="shoppingcar">购物车</van-tabbar-item>
+			  <van-tabbar-item name="friends" icon="shopping-cart-o"  @click="shoppingcar('/shoppingcar')">购物车</van-tabbar-item>
 			  <van-tabbar-item name="setting" icon="contact">个人</van-tabbar-item>
 		</van-tabbar>
 	 </div>
@@ -17,8 +17,8 @@
 		    }
 		  },
 		  methods:{
-		  	shoppingcar(){
-		  		this.$router.push("/shoppingcar")
+		  	shoppingcar(a){
+		  		this.$router.push(a)
 		  	}
 		  }
 		}
