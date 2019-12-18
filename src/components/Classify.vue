@@ -53,46 +53,40 @@
 			return{
 				arr:["手机","电视","电脑","家电","路由","出行","出行","智能","灯具","家电","电脑",],
 				flag:0,
-				num:0,
+				timeId:"",
 			}
-		},
-		mounted(){
-			// this.$axios.get('https://shiyaming1994.github.io/mi/static/homeGoods.json?page=1')
-			// .then(res=>{
-			// 	console.log(res)
-			// })
 		},
 		methods:{
 			cif_nav(i){
 				this.flag = i;
+				clearInterval(this.timeId)
+				this.timeId = setInterval(this.fn,1);
+			},
+			fn(){
+				//声明num获取点击事件中的i
+				var num = this.flag;
 				//获取滚动条距顶部距离
 				var t = document.documentElement.scrollTop || document.body.scrollTop
 				var divs = document.querySelectorAll(".cif_con_list");
-				//获取头部和顶部图片高度
-				var headh = document.querySelector(".cif_head").clientHeight;
-				var imgh = document.querySelector(".cif_image_top").clientHeight;
 				//获取点击的导航对应的右侧盒子高
-				var h = divs[i].clientHeight;
-
-				// console.log(h,headh,imgh)
-				var timeId;
-				clearInterval(timeId);
-				timeId = setInterval(function(){
-					if(t >= h*i+imgh){
-						document.documentElement.scrollTop--;
-						if(document.documentElement.scrollTop <= h*i+imgh){
-							clearInterval(timeId)
-						}
-					}else if(t <= h*i+imgh){
-						document.documentElement.scrollTop++;
-						if(document.documentElement.scrollTop >= h*i+imgh){
-							clearInterval(timeId)
-						}
+				var h = divs[num].clientHeight;
+				//声明一个变量接收上部所有盒子的高度
+				var sum = 0;
+				//获取点击处上边所有盒子的高度
+				for(var i = 0;i < num;i++){
+					sum += divs[i].clientHeight;
+				}
+				if(t > sum){
+					document.documentElement.scrollTop--;
+					if(document.documentElement.scrollTop <= sum){
+						clearInterval(this.timeId)
 					}
-				},10);
-
-				
-				// document.documentElement.scrollTop = h*i+imgh
+				}else if(t < sum){
+					document.documentElement.scrollTop++;
+					if(document.documentElement.scrollTop >= sum){
+						clearInterval(this.timeId)
+					}
+				}
 			}
 		}
 	}
