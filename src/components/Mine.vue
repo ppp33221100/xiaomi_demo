@@ -26,7 +26,7 @@
 
 			   <div class="iss">
 			   	<van-icon name="location-o" color="#FF6600" size="40"/>
-			   	   <div class="right">					
+			   	   <div class="right" @click="jump">					
 					 <p>收货地址</p>
 					 <h2>></h2>
 				  </div>				
@@ -74,6 +74,18 @@
 </template>
 
 <script type="text/javascript">
+	export default{
+		data(){
+			return{
+
+			}
+		},
+		methods:{
+			jump(){
+				this.$router.push('/collect')
+			}
+		}
+	}
 	
 </script>
 
