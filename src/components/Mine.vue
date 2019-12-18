@@ -41,7 +41,6 @@
 					 <h2>></h2>
 				  </div>				
 			   </div>
-
 			   <div class="iss">
 			   	<van-icon name="chat-o" color="#FF6600" size="40"/>
 			   	   <div class="right">					
@@ -70,9 +69,7 @@
             </div>
 		</div>
 	</div>
-	 
 </template>
-
 <script type="text/javascript">
 	export default{
 		data(){
@@ -86,7 +83,6 @@
 			}
 		}
 	}
-	
 </script>
 
 <style type="text/css" scoped>
@@ -198,9 +194,5 @@
 	   height: 0.6rem;
 	   margin-left: 1rem;
 	   line-height: 0.6rem;
-	}
-			
-	
-
-
+	}			
 </style>

@@ -57,7 +57,6 @@
 	header{
 		height: 0.82rem;
 		background: #F2F2F2;
-
 	}
 	header .van-icon:first-of-type{
        float: left;

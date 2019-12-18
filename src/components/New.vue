@@ -109,6 +109,5 @@
         text-align: center;
         color:#FFFFFF;
         font-size: 0.25rem;
-    }
-	
+    }	
 </style>
