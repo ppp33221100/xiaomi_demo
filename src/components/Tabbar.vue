@@ -3,7 +3,7 @@
 		<div class="tabbars"></div>
 		<van-tabbar v-model="active">
 			  <van-tabbar-item name="home" icon="wap-home-o">首页</van-tabbar-item>
-			  <van-tabbar-item name="search" icon="apps-o">分类</van-tabbar-item>
+			  <router-link to="/classify"><van-tabbar-item name="search" icon="apps-o">分类</van-tabbar-item></router-link>
 			  <van-tabbar-item name="friends" icon="shopping-cart-o">购物车</van-tabbar-item>
 			  <van-tabbar-item name="setting" icon="contact">个人</van-tabbar-item>
 		</van-tabbar>
