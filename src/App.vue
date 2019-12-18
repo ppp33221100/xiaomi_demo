@@ -8,6 +8,7 @@
 <script>
 import Tabbar from './components/Tabbar.vue'
 import './assets/js/remStyle.js'
+import './assets/js/jquery-1.11.0.min.js'
 export default {
   name: 'App',
   components:{

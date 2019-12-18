@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Classify from '../components/Classify.vue'
+import Classify from '../components/Classify.vue'
 // import Home from '../components/Home.vue'
 
 
@@ -18,10 +18,10 @@ export default new Router({
    //    name: 'Home',
    //    component:Home 
    //  },
-    // {
-    //   path: '/classify',
-    //   name: 'Classify',
-    //   component:Classify 
-    // },
+    {
+      path: '/classify',
+      name: 'Classify',
+      component:Classify 
+    },
   ]
 })

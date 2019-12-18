@@ -7,6 +7,7 @@ import  axios from 'axios'
 import Vant from 'vant'
 import 'vant/lib/index.css'
 import './assets/css/reset.css'
+// import BScroll from 'better-scroll'
 
 
 Vue.config.productionTip = false
@@ -17,5 +18,6 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  // BScroll
 })
