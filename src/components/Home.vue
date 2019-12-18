@@ -22,7 +22,7 @@
 		</nav>
 		<content>
 			<div class="product">
-				<div class="content" v-for="item in Phonedata" @click = 'shoppingFn'>
+				<div class="content" v-for="item in Phonedata" @click = 'shoppingFn(item)'>
 					<img :src="item.img">
 					<p>{{item.name}}</p>
 					<p>{{item.content}}</p>
@@ -40,7 +40,8 @@
 			return{
 				value:'',
 				banImg:[],
-				Phonedata:[]
+				Phonedata:[],
+				details:{}
 			}
 		},
 		methods:{
@@ -56,8 +57,13 @@
 							this.Phonedata = respans.data
 				})
 				},
-			shoppingFn(){
-				
+			shoppingFn(data){
+				this.$router.push({
+					path:"/details1",
+					query:{
+						details1:data
+					}
+				})
 			}
 
 		},

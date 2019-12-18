@@ -7,8 +7,6 @@ import  axios from 'axios'
 import Vant from 'vant'
 import 'vant/lib/index.css'
 import './assets/css/reset.css'
-
-
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios 
 Vue.use(Vant)
