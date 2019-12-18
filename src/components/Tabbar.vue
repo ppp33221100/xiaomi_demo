@@ -1,11 +1,11 @@
 <template>
 	<div class="tabbar">
 		<div class="tabbars"></div>
-		<van-tabbar v-model="active">
-			  <van-tabbar-item name="home" icon="wap-home-o">首页</van-tabbar-item>
-			  <van-tabbar-item name="search" icon="apps-o"><router-link to="/classify">分类</router-link></van-tabbar-item>
-			  <van-tabbar-item name="friends" icon="shopping-cart-o">购物车</van-tabbar-item>
-			  <van-tabbar-item name="setting" icon="contact">个人</van-tabbar-item>
+		<van-tabbar v-model="active">		  
+		  <van-tabbar-item name="home" icon="wap-home-o" @click="shoppingcar('/home')">首页</van-tabbar-item>
+		  <van-tabbar-item name="search" icon="apps-o"><router-link to="/classify">分类</router-link></van-tabbar-item>
+		  <van-tabbar-item name="friends" icon="shopping-cart-o"  @click="shoppingcar('/shoppingcar')">购物车</van-tabbar-item>
+		  <van-tabbar-item name="setting" icon="contact"  @click="shoppingcar('/mine')">个人</van-tabbar-item>
 		</van-tabbar>
 	 </div>
 </template>
@@ -15,6 +15,11 @@
 		    return {
 		      active: 'home'
 		    }
+		  },
+		  methods:{
+		  	shoppingcar(a){
+		  		this.$router.push(a)
+		  	}
 		  }
 		}
 </script>

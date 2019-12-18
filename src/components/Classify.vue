@@ -65,6 +65,8 @@
 			for(var i = 0;i < this.arr.length;i++){
 				this.n += divs[i].clientHeight;
 			}
+			// var qqq = sessionStorage.getItem("id")
+			// console.log(qqq)
 		},
 		methods:{
 			cif_nav(i){
@@ -102,8 +104,9 @@
 			scrollFunc(){
 				var agent = navigator.userAgent;
 				var that  = this;
+				var oDiv = document.querySelector(".classify")
 
-				document.onmousewheel = function(e) {
+				oDiv.onmousewheel = function(e) {
 					e = e || window.event;
 					var wheelDelta = e.wheelDelta;
 					var sum = 0;
