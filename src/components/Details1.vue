@@ -35,9 +35,6 @@
 		          :sku="skuData.sku"
 		          :goods="skuData.goods_info"
 		          :goods-id="skuData.goods_id"
-		          :quota="skuData.quota"
-		          :quota-used="skuData.quota_used"
-		          :initial-sku="initialSku"       
 		          reset-stepper-on-hide
 		          reset-selected-sku-on-hide
 		          disable-stepper-input
@@ -45,8 +42,7 @@
 		          @buy-clicked="onBuyClicked"
 		          @add-cart="onAddCartClicked"
 		        />
-		        
-      </div> 
+      	</div> 
 
 	</div>
 </template>
@@ -58,22 +54,23 @@ export default{
 			details1:this.$route.query.details1,
 			already:"小米8指纹版",
 			to:"北京",
-				skuData:skuData,
-		      	showBase:false,
-		      	showCustom: false,
-		     	showStepper: false,
-		     	showSoldout: false,
-		     	closeOnClickOverlay: true,
-		     	initialSku:{
-		     	    s1: '30349',
-		       	 	s2: '1193',
-		      	  	selectedNum: 3
-		     	 },
-		     	  customSkuValidator: () => '请选择xxx!'
+			skuData:skuData,
+		    showBase:false,
+		    showCustom: false,
+		    showStepper: false,
+		    showSoldout: false,
+		    closeOnClickOverlay: true,
+		    initialSku:{
+	     	    s1: '30349',
+	       	 	s2: '1193',
+	      	  	selectedNum: 3
+		    },
+		    customSkuValidator: () => '请选择xxx!'
 		}
 	},
 	created(){
-		// console.log(this.details1)
+		console.log(this.details1)
+		console.log(this.details1.edition)
 	},
 	methods:{
 		go(){
@@ -94,7 +91,12 @@ export default{
 		    },
 		show(d){
 		 	this.showBase=true;
-		 	// sessionStorage.setItem("id",JOSN.stringify(d)
+		 	var s = JSON.stringify(d);
+		 	// console.log(d)
+		 	// console.log(s)
+		 	console.log(JSON.parse(s).price)
+
+		 	sessionStorage.setItem("id",s)
 		 	// this.skuData.sku.tree.v.forEach(function(item) {
 		 	// 	item.name="小米"
 		 	// })
