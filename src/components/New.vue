@@ -43,7 +43,7 @@
 		},
 		methods:{
 			end(){
-				this.$router.go(-1);
+				this.$router.push('/collect');
 			},
 			save(){				
 				this.$router.push('/collect')

@@ -17,7 +17,7 @@
 		<div class="base">			
 			<div class="member">
 			   <div class="iss">
-			   	<van-icon name="like-o" color="#FF6600" size="40"/>
+			   	<van-icon name="like-o" color="#FF6600" size="25"/>
 			   	   <div class="left">					
 					 <p>会员中心</p>
 					 <h2>></h2>
@@ -25,7 +25,7 @@
 			   </div>
 
 			   <div class="iss">
-			   	<van-icon name="location-o" color="#FF6600" size="40"/>
+			   	<van-icon name="location-o" color="#FF6600" size="25"/>
 			   	   <div class="right" @click="jump">					
 					 <p>收货地址</p>
 					 <h2>></h2>
@@ -35,14 +35,14 @@
 			</div>
 			<div class="member">
 				<div class="iss">
-			   	<van-icon name="idcard" color="#FF6600" size="40"/>
+			   	<van-icon name="idcard" color="#FF6600" size="25"/>
 			   	   <div class="left">					
 					 <p>我的优惠</p>
 					 <h2>></h2>
 				  </div>				
 			   </div>
 			   <div class="iss">
-			   	<van-icon name="chat-o" color="#FF6600" size="40"/>
+			   	<van-icon name="chat-o" color="#FF6600" size="25"/>
 			   	   <div class="right">					
 					 <p>我的意见</p>
 					 <h2>></h2>
@@ -51,7 +51,7 @@
 			</div>
             <div class="idea1">
             	<div class="iss">
-			   	<van-icon name="underway-o" color="#FF6600" size="40"/>
+			   	<van-icon name="underway-o" color="#FF6600" size="25"/>
 			   	   <div class="queer">					
 					 <p>浏览记录</p>
 					 <h2>></h2>
@@ -60,7 +60,7 @@
             </div>
             <div class="idea2">
             	<div class="iss">
-			   	<van-icon name="qr" color="#FF6600" size="40"/>
+			   	<van-icon name="qr" color="#FF6600" size="25"/>
 			   	   <div class="queer">					
 					 <p>我的名片</p>
 					 <h2>></h2>
