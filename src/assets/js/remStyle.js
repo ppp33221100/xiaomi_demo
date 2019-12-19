@@ -3,7 +3,7 @@ function remStyle(){
     var w = document.documentElement.clientWidth || document.body.clientWidth
    	//console.log(w);
    	//设置根元素的大小
-    document.documentElement.style.fontSize = w/690*100+"px";
+    document.documentElement.style.fontSize = w/650*100+"px";
     //console.log(document.documentElement.style.fontSize);
 }
 remStyle();

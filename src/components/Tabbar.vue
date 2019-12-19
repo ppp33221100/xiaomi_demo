@@ -1,11 +1,11 @@
 <template>
 	<div class="tabbar">
 		<div class="tabbars"></div>
-		<van-tabbar v-model="active">
-			  <van-tabbar-item name="home" icon="wap-home-o">首页</van-tabbar-item>
-			  <van-tabbar-item name="search" icon="apps-o">分类</van-tabbar-item>
-			  <van-tabbar-item name="friends" icon="shopping-cart-o">购物车</van-tabbar-item>
-			  <van-tabbar-item name="setting" icon="contact" @click="mine">个人</van-tabbar-item>
+		<van-tabbar v-model="active">		  
+		  <van-tabbar-item name="home" icon="wap-home-o" @click="shoppingcar('/home')">首页</van-tabbar-item>
+		  <van-tabbar-item name="search" icon="apps-o"><router-link to="/classify">分类</router-link></van-tabbar-item>
+		  <van-tabbar-item name="friends" icon="shopping-cart-o"  @click="shoppingcar('/shoppingcar')">购物车</van-tabbar-item>
+		  <van-tabbar-item name="setting" icon="contact"  @click="shoppingcar('/mine')">个人</van-tabbar-item>
 		</van-tabbar>
 	 </div>
 </template>
@@ -17,9 +17,9 @@
 		    }
 		  },
 		  methods:{
-            	mine(){
-            		this.$router.push('/mine')
-            	}
+		  	shoppingcar(a){
+		  		this.$router.push(a)
+		  	}
 		  }
 		}
 </script>
@@ -30,6 +30,7 @@
 		position: fixed;
 		bottom: 0;
 		left: 0;
+		z-index: 200;
 	}
 	.tabbars{
 		height: .88rem;
