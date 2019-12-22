@@ -60,7 +60,15 @@ export default new Router({
     	component:New,
     	meta:{
            flag:false
-    	}
+    	},
+     },
+    {
+      path: '/',
+      name: 'Home',
+      component:Home,
+      meta:{
+           flag:true
+      },
     }
   ]
 })

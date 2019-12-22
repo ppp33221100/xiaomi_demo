@@ -22,7 +22,7 @@
 		<div class="site">
 			<div class="head">
 				<p>欧阳拴住</p>
-				<h2>131****2588 <span>[默认]</span></h2>
+				<h2>131****2588</h2>
 				<h2>删除</h2>
 			</div>
 			<div class="base">
@@ -31,8 +31,20 @@
 				<van-icon name="arrow" size="20"/>
 			</div>
 		</div>
+		<div class="site" v-for="item in arr">
+			<div class="head" >
+				<p>{{item.name}}</p>
+				<h2>{{item.phone}}</h2>
+				<h2>删除</h2>
+			</div>
+			<div class="base">
+				<p>{{item.block}}</p>
+				<p>{{item.detail}}</p>
+				<van-icon name="arrow" size="20"/>
+			</div>
+		</div>
 		<div class="bottom" @click="enter">
-			保存地址
+			新建地址
 		</div>
 	</div>
 </template>
@@ -41,8 +53,11 @@
 	export default{ 
 		data(){
 			return{
-
+               arr:JSON.parse(localStorage.getItem("address"))
 			}
+		},
+		created(){
+            console.log(this.arr)
 		},
 		methods:{
 			end(){

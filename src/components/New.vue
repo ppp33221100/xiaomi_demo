@@ -26,7 +26,7 @@
 		  	  <input type="checkbox" class="mmn">		  	 		  
 		  </div>
 		  <div class="bottom" @click="save">
-			新建地址
+			保存地址
 		</div>		  
       </div>	
 </template>
@@ -35,17 +35,25 @@
 	export default{
 		data(){
 			return{
+
                name:"",
                phone:"",
                block:"",
-               detail:""
+               detail:"",
+               str:JSON.parse(localStorage.getItem("address"))||[]
 			}
 		},
 		methods:{
 			end(){
 				this.$router.push('/collect');
 			},
-			save(){				
+			save(){
+			  if(this.name=="" || this.phone=="" || this.block=="" || this.detail==""){
+                   alert("姓名,手机号码,地址不能为空")
+                   return;
+			    }					
+				this.str.push({name:this.name,phone:this.phone,block:this.block,detail:this.detail})
+			  localStorage.setItem("address",JSON.stringify(this.str))			
 				this.$router.push('/collect')
 			}			
 		}

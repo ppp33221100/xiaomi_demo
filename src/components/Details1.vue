@@ -61,7 +61,6 @@ export default{
 			this.$router.go(-1)
 		},
 		onClickIcon(){
-
     	},
     	onClickButton() {
       		this.show=true

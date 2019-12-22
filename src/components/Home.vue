@@ -22,7 +22,8 @@
 		</nav>
 		<content>
 			<div class="product">
-				<div class="content" v-for="item in Phonedata" @click = 'shoppingFn(item)'>
+
+				<div class="content" v-for="item in Phonedata" @click = 'shoppingFn(item)'>			
 					<img :src="item.img">
 					<p>{{item.name}}</p>
 					<p>{{item.content}}</p>
@@ -42,6 +43,7 @@
 				banImg:[],
 				Phonedata:[],
 				details:{}
+
 			}
 		},
 		methods:{
@@ -49,12 +51,15 @@
 					this.$axios.get('https://shiyaming1994.github.io/mi/static/rotationChart.json')
 					.then(res=>{
 						this.banImg = res.data
+
+						console.log(this.banImg)
 					})
 					},
 			selHomeCon(){
 						this.$axios.get('https://shiyaming1994.github.io/mi/static/homeGoods.json?page=1')
 						.then(respans=>{
 							this.Phonedata = respans.data
+
 				})
 				},
 			shoppingFn(data){
@@ -64,12 +69,17 @@
 						details1:data
 					}
 				})
+					console.log(this.Phonedata)				
+				},
+			shoppingFn(){
+				
 			}
 
 		},
 		created(){
 			this.selBan()
 			this.selHomeCon()
+
 			}
 		
 	}
