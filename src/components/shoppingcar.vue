@@ -9,7 +9,7 @@
 	</aside>
 	<div class="commodity">
 		<ul>
-			<li v-for="(item,index) in arr">
+			<li v-for="(item,index) in arr" v-if="tis==0">
 				<div class="com_img">
 					<img :src="item.img" alt="">
 				</div>
@@ -21,7 +21,7 @@
 			</li>
 		</ul>
 	</div>
-	<div class="more">
+	<div class="more" v-if="tis!=0">
 		<div class="cen">
 			<span>购物车还是空的</span>
 			<span @click = "goto('/home')">去逛逛</span>
@@ -61,7 +61,8 @@
 				// arr:[],
 				arr:this.$store.state.arr,
 				number:0,
-				prices:0
+				prices:0,
+				tis:0
 			}
 		},
 		methods:{
@@ -83,6 +84,10 @@
 			}
 		},
 		created(){
+			if(this.Phonedata.length!=0){
+				this.tis=this.Phonedata.length
+			}
+			console.log(this.Phonedata.length)
 			for(var i = 0;i < this.value.length;i++){
 				this.number += Number(this.value[i])
 				this.prices += Number(this.arr[i].price)*Number(this.value[i])

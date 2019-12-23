@@ -82,7 +82,6 @@
 				value:localStorage.getItem(this.$store.state.msg.id),
 				imgList:[],
 				info_img:[],
-
 				datas:this.$store.state.msg,
 				// 版本内的数据
 				color:this.$store.state.msg.edition[0],
@@ -99,6 +98,7 @@
 				this.$store.commit('COUNT',this.value);
 				this.$store.commit('COUNT_obj',JSON.stringify(this.datas));
 				this.$store.commit('PRICE',this.value);
+				this.$router.push('/shoppingCar');
 			},
 			getData(){
 				this.info_img = this.datas.info_img;
