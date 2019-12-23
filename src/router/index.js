@@ -12,16 +12,26 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path:'',
+      component:Home,
+      meta:{
+        flag:true
+      }
+    },
+    {
       path: '/classify',
       name: 'Classify',
-      component:Classify 
+      component:Classify,
+      meta:{
+        flag:true
+      } 
     },
     {
       path:'/shoppingcar',
       name:'shoppingcar',
       component:Shoppingcar,
       meta:{
-      	flag:true
+      	flag:false
       }
     },
     {
@@ -35,7 +45,10 @@ export default new Router({
     {
       path:"/details1",
       name:"details1",
-      component:Details1
+      component:Details1,
+      meta:{
+        flag:false
+      }
   	},
   	{
   	path:'/mine',

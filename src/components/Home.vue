@@ -41,7 +41,7 @@
 				value:'',
 				banImg:[],
 				Phonedata:[],
-				details:{}
+				id:this.item
 			}
 		},
 		methods:{
@@ -57,19 +57,19 @@
 							this.Phonedata = respans.data
 				})
 				},
-			shoppingFn(data){
-				this.$router.push({
-					path:"/details1",
-					query:{
-						details1:data
-					}
-				})
+			shoppingFn(item){
+				// sessionStorage.setItem("message",JSON.stringify(item))
+				// this.$router.push("/details1")
+
+				this.$store.commit("MESSAGE",item)
+				this.$router.push("/details1")
 			}
 
 		},
 		created(){
 			this.selBan()
 			this.selHomeCon()
+
 			}
 		
 	}
@@ -88,6 +88,7 @@
 		padding: .2rem .36rem;
 		display: flex;
 		justify-content: space-between;
+		z-index: 100;
 	}
 	.logo{
 		width: .7rem;
