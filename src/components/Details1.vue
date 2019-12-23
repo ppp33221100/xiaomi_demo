@@ -15,7 +15,7 @@
 			<div class="PhoNetInfo">
 				<p  @click="show(details1)" class="PhoNetInfo_one"><span>已选</span>
 							   <span>{{ details1.name }}</span>
-					<van-icon name="arrow" />
+					<van-icon name="arrow"/>
 				</p>
 				<p class="PhoNetInfo_two"><span>送至</span><span>{{to}}</span><van-icon name="arrow" /></p>
 			</div>
@@ -29,6 +29,22 @@
   				<van-goods-action-button type="danger" text="立即购买" @click="onClickButton" />
 				</van-goods-action>
 		</div>		
+		</div>
+		<div class="sku-container">
+		        <van-sku
+		          v-model="showBase"
+		          :sku="skuData.sku"
+		          :goods="skuData.goods_info"
+		          :goods-id="skuData.goods_id"
+		          reset-stepper-on-hide
+		          reset-selected-sku-on-hide
+		          disable-stepper-input
+		          :close-on-click-overlay="closeOnClickOverlay" 
+		          @buy-clicked="onBuyClicked"
+		          @add-cart="onAddCartClicked"
+		        />
+      	</div> 
+
 	</div>
 </template>
 <script type="text/javascript">
@@ -39,22 +55,23 @@ export default{
 			details1:this.$route.query.details1,
 			already:"小米8指纹版",
 			to:"北京",
-				skuData:skuData,
-		      	showBase:false,
-		      	showCustom: false,
-		     	showStepper: false,
-		     	showSoldout: false,
-		     	closeOnClickOverlay: true,
-		     	initialSku:{
-		     	    s1: '30349',
-		       	 	s2: '1193',
-		      	  	selectedNum: 3
-		     	 },
-		     	  customSkuValidator: () => '请选择xxx!'
+			skuData:skuData,
+		    showBase:false,
+		    showCustom: false,
+		    showStepper: false,
+		    showSoldout: false,
+		    closeOnClickOverlay: true,
+		    initialSku:{
+	     	    s1: '30349',
+	       	 	s2: '1193',
+	      	  	selectedNum: 3
+		    },
+		    customSkuValidator: () => '请选择xxx!'
 		}
 	},
 	created(){
-		// console.log(this.details1)
+		console.log(this.details1)
+		console.log(this.details1.edition)
 	},
 	methods:{
 		go(){
@@ -74,7 +91,12 @@ export default{
 		    },
 		show(d){
 		 	this.showBase=true;
-		 	// sessionStorage.setItem("id",JOSN.stringify(d)
+		 	var s = JSON.stringify(d);
+		 	// console.log(d)
+		 	// console.log(s)
+		 	console.log(JSON.parse(s).price)
+
+		 	sessionStorage.setItem("id",s)
 		 	// this.skuData.sku.tree.v.forEach(function(item) {
 		 	// 	item.name="小米"
 		 	// })

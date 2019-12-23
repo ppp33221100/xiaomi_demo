@@ -2,7 +2,7 @@
 	<div class="classify">
 		<div class="cif_head"></div>
 		<header class="cif_header">
-			<van-nav-bar title="分类" left-text="返回" left-arrow>
+			<van-nav-bar title="分类" left-text="返回" left-arrow @click-left="returnFn()">
 				<van-icon name="search" slot="right" />
 			</van-nav-bar>
 		</header>
@@ -68,6 +68,9 @@
 			// console.log(qqq)
 		},
 		methods:{
+			returnFn(){
+				this.$router.go(-1)
+			},
 			cif_nav(i){
 				this.flag = i;
 				clearInterval(this.timeId)
