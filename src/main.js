@@ -7,6 +7,7 @@ import  axios from 'axios'
 import Vant from 'vant'
 import 'vant/lib/index.css'
 import './assets/css/reset.css'
+import store from './store/index.js'
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios 
@@ -15,6 +16,7 @@ Vue.use(Vant)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>',
   // BScroll
