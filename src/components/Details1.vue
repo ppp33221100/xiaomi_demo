@@ -24,29 +24,38 @@
 			<img :src="item.img" v-for="item in details1.info_img">
 				<van-goods-action>
   				<van-goods-action-icon icon="chat-o" text="客服" @click="onClickIcon" />
-  				<van-goods-action-icon icon="cart-o" text="购物车" @click="onClickIcon" />
+  				<van-goods-action-icon icon="cart-o" text="购物车" :info="info" @click="onClickIcon" />
   				<van-goods-action-button type="warning" text="加入购物车" @click="onClickButton" />
   				<van-goods-action-button type="danger" text="立即购买" @click="onClickButton" />
 				</van-goods-action>
 		</div>
-		<div class="sku-container">
-		        <van-sku
-		          v-model="showBase"
-		          :sku="skuData.sku"
-		          :goods="skuData.goods_info"
-		          :goods-id="skuData.goods_id"
-		          :quota="skuData.quota"
-		          :quota-used="skuData.quota_used"
-		          :initial-sku="initialSku"       
-		          reset-stepper-on-hide
-		          reset-selected-sku-on-hide
-		          disable-stepper-input
-		          :close-on-click-overlay="closeOnClickOverlay" 
-		          @buy-clicked="onBuyClicked"
-		          @add-cart="onAddCartClicked"
-		        />
-		        
-      </div> 
+		<van-popup v-model="showbase" position="bottom"
+  		:style="{ height: '80%' }">
+  		<div class="commodity">
+  			<img :src="img" alt="">
+  			<p>￥{{price}}</p>
+  			<p><span>{{details1.name}}{{memory}}{{color}}</span></p>
+  		</div>
+  		<div class="versions">
+  			<p>版本</p>
+  			<div v-for="(item,index) in details1.edition" @click="edit1(item,item.color,index)"
+  			 :class="{active:num==index}">{{item.Memory}}<span>{{item.edition_price}}元</span></div>
+  		</div>
+  		<div class="color">
+  			<p>颜色</p>
+  			<div v-for="(item,index) in colorarr" :class="{active:num2==index}"  @click="edit2(index,item)">{{item.color_list}}</div>
+  		</div>
+  		<div class="buynum">
+  			<p>购买数量</p>
+  			<van-stepper v-model="value" />
+  		</div>
+  		<van-goods-action>
+  		<van-goods-action-icon icon="chat-o" text="客服" @click="onClickIcon" />
+  		<van-goods-action-icon icon="cart-o" text="购物车" :info="info" @click="onClickIcon" />
+  		<van-goods-action-button type="warning" text="加入购物车" @click="onClickButton" />
+  		<van-goods-action-button type="danger" text="立即购买" @click="onClickButton" />
+		</van-goods-action>
+  		</van-popup>
 
 	</div>
 </template>
@@ -55,49 +64,59 @@ import  skuData from '../assets/js/data.js';
 export default{
 	data(){
 		return{
-			details1:this.$route.query.details1,
+			details1:JSON.parse(sessionStorage.getItem("details1")),
 			already:"小米8指纹版",
 			to:"北京",
-				skuData:skuData,
-		      	showBase:false,
-		      	showCustom: false,
-		     	showStepper: false,
-		     	showSoldout: false,
-		     	closeOnClickOverlay: true,
-		     	initialSku:{
-		     	    s1: '30349',
-		       	 	s2: '1193',
-		      	  	selectedNum: 3
-		     	 },
-		     	  customSkuValidator: () => '请选择xxx!'
+			info:Number(localStorage.getItem("info")),
+			showbase:false,
+			img:"",
+			value:0,
+			memory:"",
+			color:"",
+			price:"",
+			num:0,
+			num2:0,
+			colorarr:[],
+			str:JSON.parse(localStorage.getItem("com"))||[]
 		}
 	},
 	created(){
 		//console.log(this.details1)
+		this.img=this.details1.img
+		this.colorarr=this.details1.edition[0].color
+		this.memory=this.details1.edition[0].Memory
+		this.color=this.details1.edition[0].color[0].color_list
+		this.price=this.details1.edition[0].edition_price
 	},
 	methods:{
 		go(){
 			this.$router.go(-1)
 		},
 		onClickIcon(){
-
+			this.$router.push("/shoppingcar")
     	},
-    	onClickButton() {
-      		this.show=true
+    	//加入购物车触发的函数
+    	onClickButton(){
+    		this.info+=this.value
+    		localStorage.setItem("info",this.info)
+    		this.str.push({memory:this.memory,img:this.img,color:this.color,price:this.price,value:this.value})
+    		console.log(this.str)
+    		localStorage.setItem("com",JSON.stringify(this.str))
     	},
-    	onBuyClicked(data) {
-		      this.$toast('buy:' + JSON.stringify(data));
-		      //console.log(JSON.stringify(data))
-		    },
-	 onAddCartClicked(data) {
-		      this.$toast('add cart:' + JSON.stringify(data));
-		    },
 		show(d){
-		 	this.showBase=true
-		 	// this.skuData.sku.tree.v.forEach(function(item) {
-		 	// 	item.name="小米"
-		 	// })
-		 	console.log(this.skuData.sku.tree.v)
+			this.showbase=true
+		},
+		//商品规格的函数
+		edit1(item,s,i){
+			this.colorarr=s
+			this.num=i
+			this.price=item.edition_price
+			this.memory=item.Memory
+		},
+		edit2(q,item){
+			this.num2=q
+			this.img=item.img
+			this.color=item.color_list
 		}
 	}
 }
@@ -180,5 +199,91 @@ export default{
 		font-size:0.3rem;
 		z-index:100;
 		opacity:0.8;
+	}
+	.sku-container{
+		width:100%;
+		height:8.62rem;
+		background:#fff;
+		position:fixed;
+		top:2.83rem;
+		left:0;
+	}
+	.headers{
+		width:100px;
+		height:100px;
+		background:red;
+	}
+	.commodity{
+		width:5.76rem;
+		height:1.8rem;
+		margin:0.5rem auto;
+		img{
+			width:1.8rem;
+			height:100%;
+			float:left;
+		}
+		p:first-of-type{
+			float:right;
+			width:3.6rem;
+			font-size:22px;
+			margin-top:0.44rem;
+		}
+		p:nth-of-type(2){
+			float:right;
+			width:3.6rem;
+			font-size:16px;
+		}
+	}
+	.versions{
+		width:5.76rem;
+		margin:auto;
+		div{
+			width:100%;
+			height:0.6rem;
+			margin:0.2rem 0;
+			border:1px solid #CCCCCC;
+			line-height:0.6rem;
+			text-indent:0.2rem;
+			color:#CCCCCC;
+			span{
+				float:right;
+				margin-right:0.2rem;
+			}
+		}
+	}
+	.color{
+		width:5.76rem;
+		height:1.79rem;
+		margin:auto;
+		div{
+			width:1.09rem;
+			height:0.6rem;
+			margin:0.2rem 0.1rem;
+			border:1px solid #CCCCCC;
+			float:left;
+			line-height:0.6rem;
+			text-align:center;
+			color:#CCCCCC;
+			span{
+				float:right;
+				margin-right:0.2rem;
+			}
+		}
+	}
+	.buynum{
+		width:5.76rem;
+		height:0.7rem;
+		margin:auto;
+		.van-stepper{
+			float:right;
+		}
+	}
+	 .versions .active{
+		color:#F56600;
+		border-color:#F56600;
+	}
+	 .color .active{
+		color:#F56600;
+		border-color:#F56600;
 	}
 </style>

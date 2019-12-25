@@ -15,7 +15,9 @@ export default {
           },
           {
             id: '1215',
-            name: '白色'
+            name: '白色',
+             imgUrl:
+              'https://img.yzcdn.cn/upload_files/2017/02/21/FjKTOxjVgnUuPmHJRdunvYky9OHP.jpg!100x100.jpg'
           }
         ],
         k_s: 's1',
@@ -92,10 +94,10 @@ export default {
     price: '5.00',
     stock_num: 227, // 商品总库存
     none_sku: false,  // 是否无规格商品 
-    hide_stock: false  // 是否隐藏剩余库存
+    hide_stock:true  // 是否隐藏剩余库存
   },
   goods_id: '946755', 
-  quota: 3, //限购数量 
+  quota: 0, //限购数量 
   quota_used: 0,  //已经购买过的数量
   goods_info: {
     title: '测试商品A',

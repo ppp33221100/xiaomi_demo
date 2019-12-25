@@ -12,8 +12,10 @@ export default {
   name: 'App',
   components:{
     Tabbar
+  },
+  created(){
+    this.$router.push("/home")
   }
-
 }
 </script>
 

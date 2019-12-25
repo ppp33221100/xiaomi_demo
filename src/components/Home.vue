@@ -58,12 +58,8 @@
 				})
 				},
 			shoppingFn(data){
-				this.$router.push({
-					path:"/details1",
-					query:{
-						details1:data
-					}
-				})
+				this.$router.push("/details1")
+				sessionStorage.setItem("details1",JSON.stringify(data))
 			}
 
 		},

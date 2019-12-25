@@ -6,9 +6,17 @@ import Details1 from '../components/Details1.vue'
 import Mine from '../components/Mine.vue'
 import Collect from '../components/Collect.vue'
 import New from '../components/New.vue'
+// import Classify from "../components/Classify.vue"
 Vue.use(Router)
 export default new Router({
   routes: [
+   {
+   	path:'/',
+    component:Home,
+     meta:{
+    	flag:true
+    }
+    },
     {
     path:'/shoppingcar',
     name:'shoppingcar',

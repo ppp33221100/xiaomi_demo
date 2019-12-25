@@ -5,9 +5,12 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	state:{
 		//存储共享数据
+		arrMoney:[]
 	},
 	mutations:{
-		//修改数据 同步
+		ADD(state,val){
+			localStorage.setItem("item",val)
+		}
 	},
 	actions:{
 		//异步
